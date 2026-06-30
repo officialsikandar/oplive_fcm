@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>FCM Notification Sender</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div class="wrap">
+    <h1>FCM Notification Sender</h1>
+    <p class="hint">Server check: <a href="send.php?check=1" target="_blank">send.php?check=1</a></p>
+
+    <form id="form">
+      <label>Firebase JSON (service account)</label>
+      <textarea id="json" rows="6" placeholder='Paste service account JSON here' required></textarea>
+      <label class="upload">
+        <input type="file" id="json-file" accept=".json" hidden />
+        Upload JSON file
+      </label>
+
+      <label>FCM Token</label>
+      <textarea id="token" rows="2" placeholder="Paste full token from FirebaseMessaging.getToken()" required></textarea>
+      <p class="hint">Must be from the same Firebase project as your JSON. Get a fresh token from the app — old tokens expire.</p>
+
+      <label>Title</label>
+      <input type="text" id="title" placeholder="Notification title" required />
+
+      <label>Message</label>
+      <textarea id="body" rows="2" placeholder="Notification message"></textarea>
+
+      <label>Image URL (optional)</label>
+      <input type="url" id="image" placeholder="https://..." />
+
+      <label>Custom data (optional) — key=value, one per line</label>
+      <textarea id="data" rows="3" placeholder="screen=home&#10;userId=123"></textarea>
+
+      <button type="submit" id="send-btn">Send Notification</button>
+    </form>
+
+    <pre id="result" class="hidden"></pre>
+  </div>
+  <script src="config.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>
